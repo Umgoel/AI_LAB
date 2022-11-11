@@ -1,8 +1,5 @@
 #tic tac toe using AI
-import emoji
 player, computer = 'x', 'o'
-
-#this function is to check if there are any moves left in the game
 
 def main():
     board = [
@@ -15,11 +12,11 @@ def main():
     print("At each turn enter your cell number")
     print("Cells are numbered from 1 to 9")
     
-#  choice = input("Do you want to play first?\n")
-    choice = 'y'
+    choice = input("Do you want to play first?\n")
+#    choice = 'n'
     if choice.lower() in ["yes", "y", "yeah"]:
         k = 0
-        while(k < 5):
+        while(k <= 5):
             k += 1
             print("Your Turn:")
             cell = int(input("Cell Number: "))
@@ -37,9 +34,9 @@ def main():
             board[i][j] = player
             printBoard(board)
             if(evaluate(board) == 10):
-                print("YOU WIN!!!", "\U0001f600")
+                print("YOU WIN!!!")
                 return
-            if(k == 4 and evaluate(board) == 0):
+            if(k == 5 and evaluate(board) == 0):
                 print("DRAW!!!")
                 return
             print("Computer's Turn")
@@ -50,7 +47,7 @@ def main():
             printBoard(board)
 
             if(evaluate(board) == -10):
-                print("YOU LOOSE!", emoji.emojize(":zipper-mouth_face:"))
+                print("YOU LOOSE!")
                 return
 
     elif choice.lower() in ["no", "n", "nah"]:
@@ -64,7 +61,7 @@ def main():
             board[i][j] = computer
             printBoard(board)
             if(evaluate(board) == -10):
-                print("YOU LOOSE!", emoji.emojize(":zipper-mouth_face:"))
+                print("YOU LOOSE!")
                 return
             if(k == 4 and evaluate(board) == 0):
                 print("DRAW!!!")
@@ -86,7 +83,7 @@ def main():
             board[i][j] = player
             printBoard(board)
             if(evaluate(board) == 10):
-                print("YOU WIN!!!", "\U0001f600")
+                print("YOU WIN!!!")
                 return
     else:
         print("GAME ENDS as you did not enter a valid choice")
@@ -177,13 +174,11 @@ def findBestMove(board):
         for j in range(3):
 
             if(board[i][j] == '_'):
-
                 board[i][j] = computer
-
                 moveVal = minimax(board, 0, True)
-
                 board[i][j] = '_'
                 #print("best val = ",bestVal)
+                
                 if(moveVal+10 < bestVal):
                     bestMove = (i, j)
                     bestVal = moveVal
