@@ -1,18 +1,19 @@
-def vacuumCleaner(floor):
-    m = len(floor)
-    n = len(floor[0])
-    for i in range(m):
-          for j in range(n):
-               if(floor[i][j] == 1):
-                    print("ROOM ",i,j,"  DIRTY")
-                    floor[i][j] = 0
-                    print("ROOM ",i,j," CLEANED")
-               else:
-                    print("ROOM  ",i,j," CLEAN")
-    print("ALL ROOMS CLEANED")
+def vacuumCleaner(flr):
+    n = len(flr)
+    v = 0
+    cost=0
+    if(v==0):
+        if(flr[v]==1):
+            flr[v]=0
+            cost+=1
+            print("Cleaned room no. ",v)
+            v=1
+    if(v==1):
+         if(flr[v]==1):
+            flr[v]=0
+            cost+=1
+            print("Cleaned room no. ",v)
+    print("total cost = ",cost)
 
-floor = [[1, 1, 0],
-           [0, 0, 0],
-           [0, 1, 1],
-           [0, 1, 0]]
-vacuumCleaner(floor)
+flr = [1,1]
+vacuumCleaner(flr)
